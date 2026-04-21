@@ -1,0 +1,26 @@
+<table border="1">
+    <thead>
+        <tr>
+            <th>Libelle</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% if categories %}
+        {% for categorie in categories %}
+        <tr>
+            <td> {{categorie.libelle}} </td>
+            <td> {{categorie.description}} </td>
+            <td>
+                <a href="{% url 'details' categorie.id %}">Détails</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>Aucune catégorie pour le moement.</tr>
+        {% endif %}
+
+    </tbody>
+</table>
