@@ -18,11 +18,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ges_catalogue import views
-from ges_catalogue.views import Home
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', views.accueil, name='accueil'),
-    path('categories/<int:id>', views.details, name='details')
+    path('categories', views.categories, name='categorie.index'),
+    path('categorie/ajouter', views.createCategorie, name='categorie.create'),
+    path('categorie/details/<int:id>', views.showCategorie, name='categorie.show'),
+
+    path('livres', views.livres, name='livre.index'), 
+
+    path('emprunts', views.emprunts, name='emprunt.index')
     #path('', Home.as_view(), name='accueil')
 ]

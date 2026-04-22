@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %} 
+{% block titre %}Ajouter catégorie{% endblock %} {% block contenu %}
+<h1 class="h1">Ajouter une nouvelle catégorie</h1>
+<form>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label"
+      >Libellé</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="Ex. Poésie"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"
+      >Description</label
+    >
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+    ></textarea>
+  </div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </div>
+</form>
+{% endblock %}
