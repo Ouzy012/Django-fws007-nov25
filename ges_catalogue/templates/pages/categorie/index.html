@@ -2,6 +2,13 @@
 {% block titre %}Nos catégories{% endblock %}
 {% block contenu %}
 <h1>Liste de nos catégories</h1>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">
+            {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
 <a class="btn btn-success" 
 href="{% url "categorie.create" %}">Ajouter une nouvelle catégorie</a>
 <table class="table table-striped table-hover">
@@ -19,7 +26,7 @@ href="{% url "categorie.create" %}">Ajouter une nouvelle catégorie</a>
                     <td>{{cat.libelle}}<td>
                     <td>
                         <a class="btn btn-success" href="{% url 'categorie.show' cat.id %}">Voir<a>
-                        <a class="btn btn-warning" href="#">Modifier<a>
+                        <a class="btn btn-warning" href="{% url "categorie.update" cat.id %}">Modifier<a>
                         <a class="btn btn-danger" href="#">Supprimer<a>
                     <td>
                 </tr>

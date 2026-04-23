@@ -25,6 +25,7 @@ urlpatterns = [
     path('categories', views.categories, name='categorie.index'),
     path('categorie/ajouter', views.createCategorie, name='categorie.create'),
     path('categorie/details/<int:id>', views.showCategorie, name='categorie.show'),
+    path('categorie/modifier/<int:id>', views.updateCategorie, name='categorie.update'),
 
     path('livres', views.livres, name='livre.index'), 
 

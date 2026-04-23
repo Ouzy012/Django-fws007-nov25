@@ -1,15 +1,19 @@
-{% extends "layouts/base.html" %}
-{% block titre %}Details catégorie{% endblock  %}
+{% extends "layouts/base.html" %} 
+{% block titre %}Details catégorie{% endblock%} 
 {% block contenu %}
 <h1>Détails catégorie</h1>
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 18rem">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title">{{categorie.libelle}}</h5>
     <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk of the card’s content.
+      {% if categorie.description %} 
+        {{categorie.description}} 
+      {% else %} 
+      Aucune description 
+      {% endif %}
     </p>
     <a href="#" class="btn btn-warning btn-sm">Modifier</a>
     <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
   </div>
 </div>
-{% endblock  %}
+{% endblock %}

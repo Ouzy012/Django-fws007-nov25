@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %} 
-{% block titre %}Ajouter catégorie{% endblock%} {% block contenu %}
-<h1 class="h1">Ajouter une nouvelle catégorie</h1>
+{% block titre %}Modifier catégorie  {% endblock%} {% block contenu %}
+<h1 class="h1">Modifier la catégorie "{{categorie.libelle}}" </h1>
 <form method="post">
   {% csrf_token %}
 
