@@ -32,22 +32,21 @@ def createCategorie(request):
         'form': form,        
     })
 
-def showCategorie(request, id):
+def getCategoryById(request, id):
     try:
-        categorie = Categorie.objects.get(id=id)
+        return Categorie.objects.get(id=id)
     except Categorie.DoesNotExist:
         #"Creer une page pour afficher que la ressource est introuvable"
         return render(request, "404.html")
+
+def showCategorie(request, id):
+    categorie = getCategoryById(request, id)
     return render(request, "pages/categorie/show.html", {
         'categorie': categorie
     })
 
 def updateCategorie(request, id):
-    try:
-        categorie = Categorie.objects.get(id=id)
-    except Categorie.DoesNotExist:
-        #"Creer une page pour afficher que la ressource est introuvable"
-        return render(request, "404.html")
+    categorie = getCategoryById(request, id)
     if request.method == 'POST':
         form = CategorieForm(request.POST, instance=categorie)
         if form.is_valid():
@@ -63,6 +62,15 @@ def updateCategorie(request, id):
             'categorie': categorie,
             'form': form
         })
+
+def deleteCategorie(request, id):
+    categorie = getCategoryById(request, id)
+    categorie.delete()
+    messages.success(
+        request,
+        "La catégorie a été supprimée avec succès"
+    )
+    return redirect('categorie.index')
 
 def livres(request):
     return render(request, "pages/livre/index.html")

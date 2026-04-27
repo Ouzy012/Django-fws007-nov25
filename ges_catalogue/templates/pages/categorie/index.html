@@ -27,7 +27,19 @@ href="{% url "categorie.create" %}">Ajouter une nouvelle catégorie</a>
                     <td>
                         <a class="btn btn-success" href="{% url 'categorie.show' cat.id %}">Voir<a>
                         <a class="btn btn-warning" href="{% url "categorie.update" cat.id %}">Modifier<a>
-                        <a class="btn btn-danger" href="#">Supprimer<a>
+                        
+                            <a 
+                            onclick="return confirmDelete();"
+                            href="{% url "categorie.delete" cat.id %}"
+                                class="btn btn-danger" 
+                                >
+                            Supprimer
+                            <a>
+                        <script>
+                            function confirmDelete(){
+                                return confirm("Êtes-vous vraiment sur de supprimer la catégorie '{{cat.libelle}}'")
+                            }
+                        </script>
                     <td>
                 </tr>
                 

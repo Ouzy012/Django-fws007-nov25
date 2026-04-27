@@ -26,8 +26,9 @@ urlpatterns = [
     path('categorie/ajouter', views.createCategorie, name='categorie.create'),
     path('categorie/details/<int:id>', views.showCategorie, name='categorie.show'),
     path('categorie/modifier/<int:id>', views.updateCategorie, name='categorie.update'),
+    path('categorie/supprimer/<int:id>', views.deleteCategorie, name='categorie.delete'),
 
-    path('livres', views.livres, name='livre.index'), 
+    path('livres', views.livres, name='livre.index'),
 
     path('emprunts', views.emprunts, name='emprunt.index')
     #path('', Home.as_view(), name='accueil')
