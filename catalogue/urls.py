@@ -16,6 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.contrib.auth.views import LoginView
 from django.urls import path
 from ges_catalogue import views
 
@@ -30,6 +31,17 @@ urlpatterns = [
 
     path('livres', views.livres, name='livre.index'),
 
-    path('emprunts', views.emprunts, name='emprunt.index')
+    path('emprunts', views.emprunts, name='emprunt.index'),
     #path('', Home.as_view(), name='accueil')
+
+    #Gestion de l'authentification
+    path('inscription', views.inscription, name='auth.inscription'),
+    path('connexion', LoginView.as_view(
+        template_name='pages/auth/connexion.html',
+        next_page="accueil"
+        ), name='auth.connexion'),
+    path('deconnexion', LoginView.as_view(
+        template_name='pages/auth/connexion.html',
+    ), name='deconnexion')
+
 ]

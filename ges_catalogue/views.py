@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Categorie
-from .forms import CategorieForm
+from .forms import CategorieForm, InscriptionForm
 from django.contrib import messages
+from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 #FBV (Function Based View)
 
+@login_required
 def accueil(request):    
     return render(request, 'pages/accueil.html')
 
+@login_required
 def categories(request):
     categories = Categorie.objects.all()
     print(categories)
@@ -77,5 +81,20 @@ def livres(request):
 
 def emprunts(request):
     return render(request, "pages/emprunt/index.html")
+
+def inscription(request):
+    if request.method == 'POST':
+        form = InscriptionForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Votre compte a été créé avec succès")
+            return redirect('accueil')
+    else:
+        form = InscriptionForm()
+
+    return render(request, 'pages/auth/inscription.html', {
+        'form': form
+    })
 
 

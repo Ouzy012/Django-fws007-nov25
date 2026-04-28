@@ -15,6 +15,7 @@
         aria-label="Close"
       ></button>
     </div>
+    {% if user.is_authentificated %}
     <div
       class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto"
     >
@@ -63,7 +64,8 @@
       <hr class="my-3" />
       <ul class="nav flex-column mb-auto">        
         <li class="nav-item">
-          <a class="nav-link d-flex align-items-center gap-2" href="#">
+          <a class="nav-link d-flex align-items-center gap-2" 
+          href="{% url "deconnexion" %}">
             <svg class="bi" aria-hidden="true">
               <use xlink:href="#door-closed"></use>
             </svg>
@@ -72,5 +74,6 @@
         </li>
       </ul>
     </div>
+    {% endif %}
   </div>
 </div>
